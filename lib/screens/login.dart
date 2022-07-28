@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_x_login/screens/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -94,7 +96,7 @@ class LoginPage extends StatelessWidget {
                       const Text('Not a member?'),
                       const SizedBox(width: 2.0),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(const SignUpPage()),
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(
                             color: Colors.blue,

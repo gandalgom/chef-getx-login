@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -97,7 +98,7 @@ class SignUpPage extends StatelessWidget {
                       const Text('Already registered?'),
                       const SizedBox(width: 2.0),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => Get.back(),
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(
                             color: Colors.blue,

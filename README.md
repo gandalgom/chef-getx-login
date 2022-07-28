@@ -45,7 +45,7 @@ default 상태로 CocoaPod 설치시 오류가 발생.
 platform :ios, '10.0'
 ```
 
-위 내용 수정 후 pod repo를 업데이트 해줘야 실행시 정상적으로 pod 파일들을 업데이트 해줌.
+위 내용 수정 후 pod repo를 업데이트 해줘야 실행시 정상적으로 pod 파일들을 설치해줌.
 ```
 $ pod repo update
 ```
@@ -53,11 +53,12 @@ $ pod repo update
 
 ### cloud_firestore 설치시 주의점 (android)
 
-cloud_firestore 라이브러리의 android minSDK version은 19이고, flutter의 android minSDK version은 16으로 설치 오류 발생.  
+cloud_firestore 라이브러리의 android minSDK version은 19이고, flutter의 minSDK version은 16으로 설치 오류 발생.  
 그러나 설치만을 위해 android minSDK version을 기계적으로 19까지만 올릴 경우 **DexArchiveMergerException**을 보시게 됨.  
 오류가 아닌 안드로이드 아키텍처의 한계로 발생한 문제임. 자세히 알고 싶으신 분은 [링크 참조](https://developer.android.com/studio/build/multidex?hl=ko)
 
-이 내용은 **minSDK version을 21 이상**으로 하면 별도 옵션없이 처리 가능함. (Android 5.0 부터 앱을 돌아가게 하겠다는 얘기. 언제적 폰임)  
+이 내용은 **minSDK version을 21 이상**으로 하면 별도 옵션없이 처리 가능함.  
+(Android 5.0 부터 앱을 돌아가게 하겠다는 얘기. 언제적 폰임)  
 2022년 5월 현재 version 23(Android 6.0)의 점유율이 95.6%에 달하므로, _앱 보안 안정성이 강화된 23 쪽을 추천_.
 
 **android/app/build.gradle** 파일을 열고 중간의 minSdkVersion 옆의 **flutter.minSdkVersion**텍스트를 지우고 바꿈

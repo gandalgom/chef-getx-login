@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../controllers/auth_controller.dart';
+
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
@@ -11,7 +13,7 @@ class WelcomePage extends StatelessWidget {
           children: [
             const Text('Welcome'),
             IconButton(
-              onPressed: () {},
+              onPressed: () => AuthController.instance.logout(),
               icon: const Icon(Icons.login_outlined),
             ),
           ],

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
+import '../controllers/auth_controller.dart';
+
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
 
@@ -51,6 +53,7 @@ class SignUpPage extends StatelessWidget {
                           border: InputBorder.none,
                           hintText: 'Email'
                         ),
+                        keyboardType: TextInputType.emailAddress,
                       ),
                     ),
                   ),
@@ -75,7 +78,24 @@ class SignUpPage extends StatelessWidget {
                   ConstrainedBox(
                     constraints: const BoxConstraints(minWidth: double.infinity),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => AuthController.instance.register(
+                        emailController.text.trim(),
+                        passwordController.text.trim(),
+                        (errorMessage) => Get.snackbar(
+                          'title',
+                          'message',
+                          backgroundColor: Colors.red,
+                          snackPosition: SnackPosition.BOTTOM,
+                          titleText: const Text(
+                            'Registration is failed',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          messageText: Text(
+                            errorMessage,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red,
                         textStyle: const TextStyle(

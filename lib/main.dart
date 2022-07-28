@@ -1,13 +1,16 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-import '/controllers/auth_controller.dart';
-import '/screens/login.dart';
+import 'config/firebase_options.dart';
+import 'controllers/auth_controller.dart';
+import 'screens/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
 

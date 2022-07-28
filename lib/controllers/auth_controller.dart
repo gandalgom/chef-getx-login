@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-import 'package:get_x_login/screens/login.dart';
-import 'package:get_x_login/screens/welcome.dart';
+import '../screens/login.dart';
+import '../screens/welcome.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -13,7 +13,7 @@ class AuthController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    _user = authentication.currentUser as Rx<User?>;
+    _user = Rx<User?>(authentication.currentUser);
     _user.bindStream(authentication.userChanges());
     ever(_user, _moveToPage);
   }
@@ -22,12 +22,20 @@ class AuthController extends GetxController {
     Get.offAll(() => user == null ? const LoginPage() : const WelcomePage());
   }
 
-  void register(String email, String password, Function()? onFailure) async {
+  void register(
+    String email,
+    String password,
+    Function(String errorMessage) onFailure,
+  ) async {
     try {
       await authentication.createUserWithEmailAndPassword(
           email: email, password: password);
-    } on Exception {
-      onFailure;
+    } on Exception catch (e) {
+      onFailure(e.toString());
     }
+  }
+
+  void logout() {
+    authentication.signOut();
   }
 }

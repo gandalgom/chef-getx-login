@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "15888065781",
+    "project_id": "getx-shop-5ef59",
+    "storage_bucket": "getx-shop-5ef59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15888065781:android:5b2776dc2cb1b3185c91bc",
+        "android_client_info": {
+          "package_name": "com.gandalgom.get_x_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15888065781-j5i8ufoptd838h1c1opjircf0ouq8jqq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3ASRZBedNpFvAJjJIrfSJWqgii007b5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15888065781-j5i8ufoptd838h1c1opjircf0ouq8jqq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

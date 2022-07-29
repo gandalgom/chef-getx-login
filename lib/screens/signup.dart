@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/auth_controller.dart';
 
@@ -9,7 +9,6 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
 
@@ -50,9 +49,7 @@ class SignUpPage extends StatelessWidget {
                       child: TextField(
                         controller: emailController,
                         decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Email'
-                        ),
+                            border: InputBorder.none, hintText: 'Email'),
                         keyboardType: TextInputType.emailAddress,
                       ),
                     ),
@@ -76,25 +73,13 @@ class SignUpPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 8.0),
                   ConstrainedBox(
-                    constraints: const BoxConstraints(minWidth: double.infinity),
+                    constraints:
+                        const BoxConstraints(minWidth: double.infinity),
                     child: ElevatedButton(
                       onPressed: () => AuthController.instance.register(
-                        emailController.text.trim(),
-                        passwordController.text.trim(),
-                        (errorMessage) => Get.snackbar(
-                          'title',
-                          'message',
-                          backgroundColor: Colors.red,
-                          snackPosition: SnackPosition.BOTTOM,
-                          titleText: const Text(
-                            'Registration is failed',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          messageText: Text(
-                            errorMessage,
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim(),
+                        onFailure: (message) => displaySnackBar(message),
                       ),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red,
@@ -135,6 +120,20 @@ class SignUpPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void displaySnackBar(String message) {
+    Get.snackbar(
+      'title',
+      'message',
+      backgroundColor: Colors.red,
+      snackPosition: SnackPosition.BOTTOM,
+      titleText: const Text(
+        'Registration is failed',
+        style: TextStyle(color: Colors.white),
+      ),
+      messageText: Text(message, style: const TextStyle(color: Colors.white)),
     );
   }
 }

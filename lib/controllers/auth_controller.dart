@@ -18,15 +18,15 @@ class AuthController extends GetxController {
     ever(_user, _moveToPage);
   }
 
-  dynamic _moveToPage(User? user) {
+  void _moveToPage(User? user) {
     Get.offAll(() => user == null ? const LoginPage() : const WelcomePage());
   }
 
-  void register(
-    String email,
-    String password,
-    Function(String errorMessage) onFailure,
-  ) async {
+  void register({
+    required String email,
+    required String password,
+    required Function(String errorMessage) onFailure,
+  }) async {
     try {
       await authentication.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -35,7 +35,5 @@ class AuthController extends GetxController {
     }
   }
 
-  void logout() {
-    authentication.signOut();
-  }
+  void logout() => authentication.signOut();
 }

@@ -97,7 +97,7 @@ class LoginPage extends StatelessWidget {
                       const Text('Not a member?'),
                       const SizedBox(width: 2.0),
                       TextButton(
-                        onPressed: () => Get.to(const SignUpPage()),
+                        onPressed: () => Get.to(() => const SignUpPage()),
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(
                             color: Colors.blue,
